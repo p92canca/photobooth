@@ -29,11 +29,8 @@ templatePath = os.path.join('Photos', 'Template', "template.png") #Path of templ
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
-#IMAGE_WIDTH = 558
-#IMAGE_HEIGHT = 374
-IMAGE_WIDTH = 2592
-IMAGE_HEIGHT = 1944
-printSize = "6x2" # "10x15"
+IMAGE_WIDTH = 550
+IMAGE_HEIGHT = 360
 
 
 # Load the background template
@@ -340,17 +337,9 @@ def TakePictures():
         image3 = PIL.Image.open(filename3)   
         TotalImageCount = TotalImageCount + 1
         
-        if (printSize == "10x15"):
-		
-            bgimage.paste(image1, (625, 30))
-            bgimage.paste(image2, (625, 410))
-            bgimage.paste(image3, (55, 410))
-			
-	if (printSize == "6x2"):
-		
-            bgimage.paste(image1, (10, 10))
-            bgimage.paste(image2, (10, 70))
-            bgimage.paste(image3, (10, 130))
+        bgimage.paste(image1, (625, 30))
+        bgimage.paste(image2, (625, 410))
+        bgimage.paste(image3, (55, 410))
 		
         # Create the final filename
         ts = time.time()
