@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import picamera
 import pygame
 import time
@@ -337,18 +339,18 @@ def TakePictures():
         image2 = PIL.Image.open(filename2)
         image3 = PIL.Image.open(filename3)   
         TotalImageCount = TotalImageCount + 1
+        
+        if (printSize == "10x15"):
 		
-		if (printSize = "10x15")
-		
-			bgimage.paste(image1, (625, 30))
-			bgimage.paste(image2, (625, 410))
-			bgimage.paste(image3, (55, 410))
+            bgimage.paste(image1, (625, 30))
+            bgimage.paste(image2, (625, 410))
+            bgimage.paste(image3, (55, 410))
 			
-		if (printSize = "6x2")
+	if (printSize == "6x2"):
 		
-			bgimage.paste(image1, (10, 10))
-			bgimage.paste(image2, (10, 70))
-			bgimage.paste(image3, (10, 130))
+            bgimage.paste(image1, (10, 10))
+            bgimage.paste(image2, (10, 70))
+            bgimage.paste(image3, (10, 130))
 		
         # Create the final filename
         ts = time.time()
