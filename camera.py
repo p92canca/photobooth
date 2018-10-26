@@ -282,7 +282,7 @@ def CapturePicture():
 	for x in range(10, -1, -1):
                 if x == 0:                        
                         Numeral = ""
-                        Message = "PATATAAA!!!"
+                        Message = "SONRIE!!!"
                 else:                        
                         Numeral = str(x)
                         Message = ""                
@@ -295,7 +295,7 @@ def CapturePicture():
         UpdateDisplay()
         imagecounter = imagecounter + 1
         ts = time.time()
-        filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
+        filename = os.path.join(imagefolder, 'tmp', str(imagecounter)+"_"+str(ts) + '.jpg')
         camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
         camera.stop_preview()
         ShowPicture(filename,5)
@@ -393,6 +393,12 @@ def TakePictures():
         Message = ""
         Numeral = ""
         ImageShowed = False"""
+        
+        # build image and send to printer
+        subprocess.call("sudo /home/pi/scripts/photobooth/assemble_and_print_6x2", shell=True)
+        UpdateDisplay()
+        #ShowPicture('/home/pi/Desktop/tempprint.jpg',6)
+        
         UpdateDisplay()
         time.sleep(1)
 
