@@ -4,7 +4,7 @@ import time
 import os
 import PIL.Image
 import cups
-import RPi.GPIO as GPIO, time, os, subprocess
+import RPi.GPIO as GPIO, subprocess
 
 from threading import Thread
 from pygame.locals import *
@@ -397,7 +397,7 @@ def TakePictures():
         # build image and send to printer
         subprocess.call("sudo /home/pi/scripts/photobooth/assemble_and_print_6x2", shell=True)
         UpdateDisplay()
-        #ShowPicture('/home/pi/Desktop/tempprint.jpg',6)
+        ShowPicture('/home/pi/photobooth/Photos/tmp/temp_montage.jpg',6)
         
         UpdateDisplay()
         time.sleep(1)
