@@ -4,7 +4,7 @@ import time
 import os
 import PIL.Image
 import cups
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO, time, os, subprocess
 
 from threading import Thread
 from pygame.locals import *
