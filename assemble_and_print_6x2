@@ -1,0 +1,8 @@
+#!/bin/bash
+cp /home/pi/photobooth/Photos/tmp/* /home/pi/photobooth/Photos/images
+mogrify -resize 570x440 /home/pi/photobooth/Photos/tmp/*
+montage /home/pi/photobooth/Photos/tmp/* /home/pi/photobooth/Photos/Template/template.png -tile 1x4 -geometry +10+10 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
+suffix=$(date +%d%m%Y_%H:%M:%S)
+cp /home/pi/photobooth/Photos/tmp/temp_montage.jpg /home/pi/photobooth/Photos/${suffix}.jpg
+#lp -d Canon_CP900 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
+rm /home/pi/photobooth/Photos/tmp/*
