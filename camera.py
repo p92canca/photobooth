@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import picamera
 import pygame
 import time
@@ -29,8 +27,10 @@ templatePath = os.path.join('Photos', 'Template', "template.png") #Path of templ
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
-IMAGE_WIDTH = 550
-IMAGE_HEIGHT = 360
+#IMAGE_WIDTH = 558
+#IMAGE_HEIGHT = 374
+IMAGE_WIDTH = 3280
+IMAGE_HEIGHT = 2464
 
 
 # Load the background template
@@ -64,12 +64,12 @@ camera.vflip                 = False
 camera.brightness            = 50
 camera.preview_alpha = 120
 camera.preview_fullscreen = True
-camera.framerate             = 30
+#camera.framerate             = 24
 #camera.sharpness             = 0
 #camera.contrast              = 8
 #camera.saturation            = 0
 #camera.ISO                   = 0
-camera.video_stabilization   = True
+#camera.video_stabilization   = False
 #camera.exposure_compensation = 0
 #camera.exposure_mode         = 'auto'
 #camera.meter_mode            = 'average'
@@ -183,7 +183,7 @@ def UpdateDisplay():
             background.fill(pygame.Color("black"))
     if (Message != ""):
             #print(displaytext)
-            font = pygame.font.Font(None, 100)
+            font = pygame.font.Font(None, 200)
             text = font.render(Message, 1, (227, 157, 200))
             textpos = text.get_rect()
             textpos.centerx = background.get_rect().centerx
@@ -279,10 +279,10 @@ def CapturePicture():
 	camera.start_preview()
 	BackgroundColor = "black"
 
-	for x in range(3, -1, -1):
+	for x in range(10, -1, -1):
                 if x == 0:                        
                         Numeral = ""
-                        Message = "PREPARADOS..."
+                        Message = "PATATAAA!!!"
                 else:                        
                         Numeral = str(x)
                         Message = ""                
@@ -298,7 +298,7 @@ def CapturePicture():
         filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
         camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
         camera.stop_preview()
-        ShowPicture(filename, 2)
+        ShowPicture(filename,5)
         ImageShowed = False
         return filename
     
@@ -329,18 +329,17 @@ def TakePictures():
         filename3 = CapturePicture()
 
         CountDownPhoto = ""
-        Message = "PROCESANDO..."
+        """Message = "Attendez svp..."
         UpdateDisplay()
 
         image1 = PIL.Image.open(filename1)
         image2 = PIL.Image.open(filename2)
         image3 = PIL.Image.open(filename3)   
         TotalImageCount = TotalImageCount + 1
-        
+	
         bgimage.paste(image1, (625, 30))
         bgimage.paste(image2, (625, 410))
         bgimage.paste(image3, (55, 410))
-		
         # Create the final filename
         ts = time.time()
         Final_Image_Name = os.path.join(imagefolder, "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
@@ -348,12 +347,11 @@ def TakePictures():
         bgimage.save(Final_Image_Name)
         # Save a temp file, its faster to print from the pi than usb
         bgimage.save('/home/pi/Desktop/tempprint.jpg')
-        ShowPicture('/home/pi/Desktop/tempprint.jpg',5) #Show the picture 5s
+        ShowPicture('/home/pi/Desktop/tempprint.jpg',6)
         bgimage2 = bgimage.rotate(90)
         bgimage2.save('/home/pi/Desktop/tempprint.jpg')
         ImageShowed = False
-        #Message = "Appuyez sur le bouton pour imprimer" #Press button for printing
-        Message = "IMPRIMIENDO..."
+        Message = "Appuyez sur le bouton pour imprimer"
         UpdateDisplay()
         time.sleep(1)
         Message = ""
@@ -372,7 +370,7 @@ def TakePictures():
                                 printers = conn.getPrinters()
                                 # select printer 0
                                 printer_name = printers.keys()[0]
-                                Message = "YA CASI ESTÁ..."
+                                Message = "Impression en cours..."
                                 UpdateDisplay()
                                 time.sleep(1)
                                 # print the buffer file
@@ -394,7 +392,7 @@ def TakePictures():
                 
         Message = ""
         Numeral = ""
-        ImageShowed = False
+        ImageShowed = False"""
         UpdateDisplay()
         time.sleep(1)
 
