@@ -5,4 +5,3 @@ sudo montage /home/pi/photobooth/Photos/tmp/1* /home/pi/photobooth/Photos/tmp/2*
 suffix=$(date +%d%m%Y_%H:%M:%S)
 sudo cp /home/pi/photobooth/Photos/tmp/temp_montage.jpg /home/pi/photobooth/Photos/${suffix}.jpg
 #lp -d Canon_CP900 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
-rm /home/pi/photobooth/Photos/tmp/*

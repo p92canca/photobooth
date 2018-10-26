@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo rm /home/pi/photobooth/Photos/tmp/*

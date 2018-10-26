@@ -11,7 +11,6 @@ from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
 
-
 # initialise global variables
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
@@ -27,11 +26,8 @@ templatePath = os.path.join('Photos', 'Template', "template.png") #Path of templ
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
-#IMAGE_WIDTH = 558
-#IMAGE_HEIGHT = 374
 IMAGE_WIDTH = 3280
 IMAGE_HEIGHT = 2464
-
 
 # Load the background template
 bgimage = PIL.Image.open(templatePath)
@@ -240,6 +236,22 @@ def ShowPicture(file, delay):
     pygame.display.flip()  # update the display
     ImageShowed = True
     time.sleep(delay)
+    
+"""def ShowPictureFinal(file, delay):
+    global pygame
+    screenPicture = pygame.display.set_mode((300,1000), pygame.FULLSCREEN)  # Full screen
+    global backgroundPicture
+    global ImageShowed
+    backgroundPicture.fill((0, 0, 0))
+    img = pygame.image.load(file)
+    img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
+    #backgroundPicture.set_alpha(200)
+    backgroundPicture.blit(img, (0,0))
+    screen.blit(backgroundPicture, (0, 0))
+    pygame.display.flip()  # update the display
+    ImageShowed = True
+    time.sleep(delay)
+    screenPicture = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen"""
 	
 # display one image on screen
 def show_image(image_path):	
@@ -279,7 +291,7 @@ def CapturePicture():
 	camera.start_preview()
 	BackgroundColor = "black"
 
-	for x in range(3, -1, -1):
+	for x in range(10, -1, -1):
                 if x == 0:                        
                         Numeral = ""
                         Message = "SONRIE!!!"
@@ -298,7 +310,7 @@ def CapturePicture():
         filename = os.path.join(imagefolder, 'tmp', str(imagecounter)+"_"+str(ts) + '.jpg')
         camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
         camera.stop_preview()
-        ShowPicture(filename,4)
+        ShowPicture(filename,5)
         ImageShowed = False
         return filename
     
@@ -394,11 +406,17 @@ def TakePictures():
         Numeral = ""
         ImageShowed = False"""
         
+        Message = "Imprimiendo..."
+        UpdateDisplay()
         # build image and send to printer
         subprocess.call("./assemble_and_print_6x2", shell=True)
         UpdateDisplay()
-        ShowPicture('/home/pi/photobooth/Photos/tmp/temp_montage.jpg',6)
-        
+        #ShowPictureFinal('/home/pi/photobooth/Photos/tmp/temp_montage.jpg',10)
+        #Delete temporal montage
+        subprocess.call("./deleteTmp", shell=True)
+        Message = ""
+        Numeral = ""
+        ImageShowed = False
         UpdateDisplay()
         time.sleep(1)
 
@@ -434,8 +452,7 @@ def WaitForPrintingEvent():
         time.sleep(1)
 
     GPIO.remove_event_detect(BUTTON_PIN)
-        
-	
+        	
 def WaitForEvent():
     global pygame
     NotEvent = True
@@ -462,7 +479,5 @@ def main(threadName, *args):
             TakePictures()
     GPIO.cleanup()
 
-
 # launch the main thread
 Thread(target=main, args=('Main', 1)).start()
-
