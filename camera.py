@@ -279,7 +279,7 @@ def CapturePicture():
 	camera.start_preview()
 	BackgroundColor = "black"
 
-	for x in range(10, -1, -1):
+	for x in range(3, -1, -1):
                 if x == 0:                        
                         Numeral = ""
                         Message = "SONRIE!!!"
@@ -298,7 +298,7 @@ def CapturePicture():
         filename = os.path.join(imagefolder, 'tmp', str(imagecounter)+"_"+str(ts) + '.jpg')
         camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
         camera.stop_preview()
-        ShowPicture(filename,5)
+        ShowPicture(filename,4)
         ImageShowed = False
         return filename
     
@@ -395,7 +395,7 @@ def TakePictures():
         ImageShowed = False"""
         
         # build image and send to printer
-        subprocess.call("sudo /home/pi/scripts/photobooth/assemble_and_print_6x2", shell=True)
+        subprocess.call("./assemble_and_print_6x2", shell=True)
         UpdateDisplay()
         ShowPicture('/home/pi/photobooth/Photos/tmp/temp_montage.jpg',6)
         
