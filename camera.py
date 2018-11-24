@@ -26,8 +26,10 @@ templatePath = os.path.join('Photos', 'Template', "template.png") #Path of templ
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
-IMAGE_WIDTH = 3280
-IMAGE_HEIGHT = 2464
+#IMAGE_WIDTH = 3280
+#IMAGE_HEIGHT = 2464
+IMAGE_WIDTH = 1695
+IMAGE_HEIGHT = 1131
 
 # Load the background template
 bgimage = PIL.Image.open(templatePath)
@@ -291,7 +293,7 @@ def CapturePicture():
 	camera.start_preview()
 	BackgroundColor = "black"
 
-	for x in range(10, -1, -1):
+	for x in range(1, -1, -1):
                 if x == 0:                        
                         Numeral = ""
                         Message = "SONRIE!!!"

@@ -7,4 +7,4 @@ suffix=$(date +%d%m%Y_%H:%M:%S)
 sleep 0.1
 sudo cp /home/pi/photobooth/Photos/tmp/temp_montage.jpg /home/pi/photobooth/Photos/${suffix}.jpg
 sleep 0.1
-lp -d EPSON_Stylus_DX3800 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
+#lp -d EPSON_Stylus_DX3800 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
