@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo cp /home/pi/photobooth/Photos/tmp/* /home/pi/photobooth/Photos/images
 sudo mogrify -resize 565 /home/pi/photobooth/Photos/tmp/*
-sudo montage /home/pi/photobooth/Photos/Template/logo.png /home/pi/photobooth/Photos/tmp/1* /home/pi/photobooth/Photos/tmp/2* /home/pi/photobooth/Photos/tmp/3* /home/pi/photobooth/Photos/Template/template.png -tile 1x5 -geometry +10+12 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
+sudo montage /home/pi/photobooth/Photos/Template/logo.png /home/pi/photobooth/Photos/tmp/1* /home/pi/photobooth/Photos/tmp/2* /home/pi/photobooth/Photos/tmp/3* /home/pi/photobooth/Photos/Template/template.png -tile 1x5 -geometry +10+10 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
 sleep 0.1
 sudo montage /home/pi/photobooth/Photos/tmp/*.jpg /home/pi/photobooth/Photos/Template/template.png -tile 1x4 -geometry +10+10 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
 suffix=$(date +%d%m%Y_%H:%M:%S)

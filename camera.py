@@ -293,7 +293,7 @@ def CapturePicture():
 	camera.start_preview()
 	BackgroundColor = "black"
 
-	for x in range(1, -1, -1):
+	for x in range(10, -1, -1):
                 if x == 0:                        
                         Numeral = ""
                         Message = "SONRIE!!!"
