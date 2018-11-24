@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo cp /home/pi/photobooth/Photos/tmp/* /home/pi/photobooth/Photos/images
-sudo mogrify -resize 570x440 /home/pi/photobooth/Photos/tmp/*
+sudo mogrify -resize 565 /home/pi/photobooth/Photos/tmp/*
 sudo montage /home/pi/photobooth/Photos/tmp/1* /home/pi/photobooth/Photos/tmp/2* /home/pi/photobooth/Photos/tmp/3* /home/pi/photobooth/Photos/Template/template.png -tile 1x4 -geometry +10+10 /home/pi/photobooth/Photos/tmp/temp_montage.jpg
 suffix=$(date +%d%m%Y_%H:%M:%S)
 sudo cp /home/pi/photobooth/Photos/tmp/temp_montage.jpg /home/pi/photobooth/Photos/${suffix}.jpg
